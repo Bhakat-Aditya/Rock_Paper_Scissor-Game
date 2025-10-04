@@ -24,15 +24,27 @@ function genValue(choice) {
     rock.style.pointerEvents = "none"
     paper.style.pointerEvents = "none"
     scissor.style.pointerEvents = "none"
-    let num = Math.floor((Math.random() * 3) + 1)
-    if (num === 1) {
-        computerimg.src = "img/rock.jpeg"
-    } else if (num === 2) {
-        computerimg.src = "img/paper.jpeg"
+
+
+    let winChance = 0.7; // 70% chance user wins
+    let userWins = Math.random() < winChance;
+
+    let computerChoice;
+
+    if (userWins) {
+        if (choice === "rock") computerChoice = "scissor";
+        else if (choice === "paper") computerChoice = "rock";
+        else computerChoice = "paper";
     } else {
-        computerimg.src = "img/scissor.jpeg"
+        const num = Math.floor((Math.random() * 3) + 1);
+        if (num === 1) computerChoice = "rock";
+        else if (num === 2) computerChoice = "paper";
+        else computerChoice = "scissor";
     }
-    computerimg.style.display = "block"
+
+    computerimg.src = `img/${computerChoice}.jpeg`;
+    computerimg.style.display = "block";
+
 
     let resImg = computerimg.getAttribute("src")
     choice = `img/${choice}.jpeg`
@@ -48,7 +60,7 @@ function genValue(choice) {
         document.body.style.backgroundColor = "lightcoral"
         msg.style.display = "block"
     }
-    
+
     setTimeout(() => {
         msg.style.display = "none"
         rock.style.opacity = "1"
@@ -60,6 +72,7 @@ function genValue(choice) {
         computerimg.style.display = "none"
         document.body.style.backgroundColor = "rgba(238, 238, 119, 0.767)"
     }, 1500);
+
     if (Number(perScore.innerText) == 5) {
         alert("You Won")
         location.reload();
@@ -67,5 +80,5 @@ function genValue(choice) {
         alert("Computer Won")
         location.reload();
     }
-
 }
+

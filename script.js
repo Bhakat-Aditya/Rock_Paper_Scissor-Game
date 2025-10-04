@@ -1,0 +1,67 @@
+const rock = document.getElementById("rock")
+const paper = document.getElementById("paper")
+const scissor = document.getElementById("scissor")
+const computerimg = document.getElementById("compImg")
+const msg = document.getElementById("cpmsg")
+
+rock.addEventListener("click", () => {
+    genValue("rock")
+})
+paper.addEventListener("click", () => {
+    genValue("paper")
+})
+scissor.addEventListener("click", () => {
+    genValue("scissor")
+})
+
+function genValue(choice) {
+    let perScore = document.getElementById("per-score")
+    let cpScore = document.getElementById("cp-score")
+    rock.style.opacity = "0.7"
+    paper.style.opacity = "0.7"
+    scissor.style.opacity = "0.7"
+    rock.style.pointerEvents = "none"
+    paper.style.pointerEvents = "none"
+    scissor.style.pointerEvents = "none"
+    let num = Math.floor((Math.random() * 3) + 1)
+    if (num === 1) {
+        computerimg.src = "img/rock.jpeg"
+    } else if (num === 2) {
+        computerimg.src = "img/paper.jpeg"
+    } else {
+        computerimg.src = "img/scissor.jpeg"
+    }
+    computerimg.style.display = "block"
+
+    let resImg = computerimg.getAttribute("src")
+    choice = `img/${choice}.jpeg`
+
+    if (resImg == choice) {
+        perScore.innerText = Number(perScore.innerText) + 1
+        computerimg.style.border = "7px solid green"
+        document.body.style.backgroundColor = "lightgreen"
+    } else {
+        cpScore.innerText = Number(cpScore.innerText) + 1
+        computerimg.style.border = "7px solid red"
+        document.body.style.backgroundColor = "lightcoral"
+    }
+    
+    setTimeout(() => {
+        rock.style.opacity = "1"
+        paper.style.opacity = "1"
+        scissor.style.opacity = "1"
+        rock.style.pointerEvents = "auto"
+        paper.style.pointerEvents = "auto"
+        scissor.style.pointerEvents = "auto"
+        computerimg.style.display = "none"
+        document.body.style.backgroundColor = "rgba(238, 238, 119, 0.767)"
+    }, 1500);
+    if (Number(perScore.innerText) == 5) {
+        alert("You Won")
+        location.reload();
+    } else if (Number(cpScore.innerText) == 5) {
+        alert("Computer Won")
+        location.reload();
+    }
+
+}

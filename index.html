@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissor Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="heading">The Rock Paper Scissor Game</h1>
+    <h2 style="margin-bottom: 20px;">Score</h2>
+    <div class="score-box"> 
+        <div class="cp-score" style="color: red; font-size: 21px;">Computer Score: <span id="cp-score">0</span></div>
+        <div class="per-score" style="color: green; font-size: 21px;">Player Score: <span id="per-score">0</span></div>
+    </div>
+    <div class="boxImg" id="choices">
+        <div class="imgs rock" id="rock"><img src="img/rock.jpeg" alt="" draggable="false"></div>
+        <div class="imgs paper" id="paper"><img src="img/paper.jpeg" alt="" draggable="false"></div>
+        <div class="imgs scissor" id="scissor"><img src="img/scissor.jpeg" alt="" draggable="false"></div>
+    </div>
+    <h2 class="subtitle">Make Your Move Buddy!!</h2>
+    <h3 style="margin-bottom: 10px; display: none;" id="cpmsg">Computer's Move⏬</h3>
+    <div class="computerMove cp-imgs"><img class="compImg" id="compImg" src="img/paper.jpeg" alt=""></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

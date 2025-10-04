@@ -15,6 +15,7 @@ scissor.addEventListener("click", () => {
 })
 
 function genValue(choice) {
+    msg.style.display = "none"
     let perScore = document.getElementById("per-score")
     let cpScore = document.getElementById("cp-score")
     rock.style.opacity = "0.7"
@@ -40,13 +41,16 @@ function genValue(choice) {
         perScore.innerText = Number(perScore.innerText) + 1
         computerimg.style.border = "7px solid green"
         document.body.style.backgroundColor = "lightgreen"
+        msg.style.display = "block"
     } else {
         cpScore.innerText = Number(cpScore.innerText) + 1
         computerimg.style.border = "7px solid red"
         document.body.style.backgroundColor = "lightcoral"
+        msg.style.display = "block"
     }
     
     setTimeout(() => {
+        msg.style.display = "none"
         rock.style.opacity = "1"
         paper.style.opacity = "1"
         scissor.style.opacity = "1"
